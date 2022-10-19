@@ -8,16 +8,18 @@
 <body>
     <img src="img/chat.png" width="100px" >
     <h1>Please sign in</h1>
-    <fieldset>
-        <legend>Login</legend>
-        <p>
-            Username <input type="text" name="Username" placeholder="Username">
-            <br>
-            Password <input type="text" name="Password" placeholder="Password">
-        </p>
-    </fieldset>
-    <a href="Register"><button>Register</button></a>
-    <a href="Login"><button>Login</button></a>
+    <form> <!-- TODO action method -->
+        <fieldset>
+            <legend>Login</legend>
+            <p>
+                Username <input type="text" name="Username" placeholder="Username">
+                <br>
+                Password <input type="text" name="Password" placeholder="Password">
+            </p>
+        </fieldset>
+        <a href="Register"><button type="button">Register</button></a>
+        <input type="submit" value="Login">
+    </form>
 
 
 </body>

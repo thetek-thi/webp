@@ -2,3 +2,16 @@
   box-sizing: border-box;
 }
 
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+img.center, a.center {
+  display: block;
+}

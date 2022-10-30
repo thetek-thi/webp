@@ -29,3 +29,31 @@ a {
 .big {
   font-size: 2rem;
 }
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+a:hover {
+  background-color: lightgreen;
+}
+
+a.spec1:hover {
+  background-color: red;
+  color:black;
+}
+
+@media only screen and (max-width: 900px) {
+
+  /*1 mistake in settings still*/
+  form label,
+  form button,
+  form select,
+  form input
+  
+  {
+      display: block;
+      width: 100%;
+  }
+}

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body onload="loadUsers()">
     <p>
         <h2 class="big">Friends</h2>
         <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
@@ -23,10 +23,12 @@
             <li><a href="">Friend request from <b>Track</b></a></li>
         </ol>
         <hr>
-        <form> <!-- TODO: action, method -->
-            <input class="biginput" type="text" name="addFriend" placeholder="Add Friend to List">
-            <input class="nomaxwidthonmobile" type="submit" value="Add">
+        <form name="form1" id="form1"> <!-- TODO: action, method -->
+            <input class="biginput" type="text" name="addFriend" placeholder="Add Friend to List" list="listoffriends">
+            <datalist id="listoffriends"></datalist>
+            <input class="nomaxwidthonmobile" type="submit" value="Add" id="button01">
         </form>
     </p>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>

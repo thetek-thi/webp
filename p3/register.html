@@ -7,19 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <script src="./scripts/register.js"></script>
   <img src="img/user.png" alt="user icon" width="100px" class="center round">
   <h1 class="center">Register yourself</h1>
-  <form action="friends.html">
+  <form name="register" action="friends.html" onsubmit="return submission()" method="post">
     <fieldset>
       <legend>Register</legend>
       <label for="username">Username</label>
-      <input class="smallinput" type="text" placeholder="Username" id="username" name="username" required>
+      <input class="smallinput" type="text" placeholder="Username" id="username" name="username" onchange="checkUser()" required>
       <br>
       <label for="password">Password</label>
-      <input class="smallinput" type="text" placeholder="Password" id="password" name="password" required>
+      <input class="smallinput" type="password" placeholder="Password" id="password" name="password" onchange="checkPassword()" required>
       <br>
-      <label for="confirm-password">Confirm Password</label>
-      <input class="smallinput" type="text" placeholder="Confirm Password" id="confirm-password" name="confirm-password" required>
+      <label for="confirmPassword">Confirm Password</label>
+      <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" onchange="checkConfirm()" required>
     </fieldset>
     <p class="center">
       <button type="button" class="nomaxwidthonmobile">Cancel</button>

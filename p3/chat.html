@@ -5,6 +5,12 @@
   <title>Chat with Tom</title>
   <link rel="stylesheet" href="style/main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    window.chatCollectionId = '288e633a-bebc-4bcc-80b8-4d6f4226b644'
+    window.chatToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY3ODk5NDExfQ.XIPoLdoBdBDzM13ivyXFrCEgXlg1CBOcxrYVPIDrUO8'
+    window.chatServer = 'https://online-lectures-cs.thi.de/chat'
+  </script>
+  <script src="./scripts/chat.js"></script>
 </head>
 <body>
   <h1>Chat with Tom</h1>
@@ -13,14 +19,13 @@
     <a href="profile.html">Profile</a> |
     <a class="spec1" href="friends.html">Remove Friend</a>
   </p>
-  <div class="borderaround">
-    <p>Tom: Hallo, Welt!</p>
-    <p>Jerry: Wie gehts?</p>
+  <div class="borderaround" id="chatview">
+    <p><small class="timelabel">Loading...</small></p>
   </div>
   <p>
     <form>
-      <input class="biginput nomaxwidthonmobile" type="text" id="msg" placeholder="New Message" name="msg">
-      <input class="nomaxwidthonmobile" type="submit" value="Send">
+      <input class="biginput nomaxwidthonmobile" type="text" id="msginput" placeholder="New Message" name="msg">
+      <button class="bluebutton nomaxwidthonmobile" type="button" onclick="sendMessageHandler()">Send</button>
     </form>
   </p>
 </body>

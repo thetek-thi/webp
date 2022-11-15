@@ -74,6 +74,7 @@ function checkConfirm() {
 function submission() {
     let status = false;
 
+    checkUserExistence()
     if (checkPassword() && checkColor() && checkConfirm()) {
         status = true;
     }

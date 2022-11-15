@@ -5,8 +5,13 @@
     <title>friendslist</title>
     <link rel="stylesheet" href="style/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      window.chatCollectionId = '288e633a-bebc-4bcc-80b8-4d6f4226b644'
+      window.chatToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjY3ODk5NDExfQ.XIPoLdoBdBDzM13ivyXFrCEgXlg1CBOcxrYVPIDrUO8'
+      window.chatServer = 'https://online-lectures-cs.thi.de/chat'
+    </script>
 </head>
-<body onload="loadUsers()">
+<body>
     <p>
         <h2 class="big">Friends</h2>
         <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
@@ -24,7 +29,7 @@
         </ol>
         <hr>
         <form name="form1" id="form1"> <!-- TODO: action, method -->
-            <input class="biginput" type="text" name="addFriend" placeholder="Add Friend to List" list="listoffriends">
+            <input class="biginput" type="text" name="addFriend" placeholder="Add Friend to List" list="listoffriends" oninput="loadUsers()" id="friendinput">
             <datalist id="listoffriends"></datalist>
             <input class="nomaxwidthonmobile" type="submit" value="Add" id="button01">
         </form>

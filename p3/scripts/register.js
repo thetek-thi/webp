@@ -1,28 +1,53 @@
 
 //document.getElementById("register").addEventListener("submit", checkForm);
- // TODO: Username existiert schon fehlt noch 
- // TODO: Einfügen in main.js
+// TODO: Username existiert schon fehlt noch 
+// TODO: Einfügen in main.js
 
 
 
 
-function checkUser() {
+//function checkUser() {
+//    var username = document.register.username.value;
+//    let status = false;
+//    console.log()
+//    if ((username.length < 3) || (checkUserExistence() == false)) {
+//        //alert("Der gewählte Nutzername ist zu kurz, er muss mindestens 3 Zeichen lang sein.");
+//        console.log("Nutzername ist zu kurz oder Name gibt es schon")
+//    } else {
+//        status = true;
+//    }
+//    return status;
+//}
+
+function checkUserExistence() {
     var username = document.register.username.value;
-    let status = false;
-    if (username.length <= 3) {
-        //alert("Der gewählte Nutzername ist zu kurz, er muss mindestens 3 Zeichen lang sein.");
-        console.log("Nutzername ist zu kurz")
-        document.getElementById("username").style.borderColor = "red";
-        document.getElementById("username").style.borderWidth = "3px";
-    } else {
-        document.getElementById("username").style.borderColor = "green";
-        document.getElementById("username").style.borderWidth = "3px";
-        status = true;
-    }
-    return status;
-}
+    var xmlhttp = new XMLHttpRequest();
 
-//if (xmlhttp.status == 204){
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            if (xmlhttp.status == 204) {
+                console.log("Exists");
+                document.getElementById("username").style.borderColor = "red";
+                document.getElementById("username").style.borderWidth = "3px";
+            } else if (xmlhttp.status == 404) {
+                if(username.length <3){
+                document.getElementById("username").style.borderColor = "red";
+                document.getElementById("username").style.borderWidth = "3px";
+                } else{
+                document.getElementById("username").style.borderColor = "green";
+                document.getElementById("username").style.borderWidth = "3px";
+                }
+                console.log("Does not exist");
+            }
+        }
+        //console.log(xmlhttp.status);
+    };
+
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/" + window.chatCollectionId + "/user/" + username, true);
+    // console.log("https://online-lectures-cs.thi.de/chat/" + window.chatCollectionId +"/user/" + username);
+    // console.log(xmlhttp);
+    xmlhttp.send();
+}
 
 function checkPassword() {
     var password = document.register.password.value;
@@ -54,13 +79,13 @@ function checkConfirm() {
     return status;
 }
 
-function submission(){
+function submission() {
     let status = false;
-    
-    if( checkPassword() && checkUser() && checkConfirm()){
+
+    if (checkPassword() && checkUser() && checkConfirm() && checkUserExistence()) {
         status = true;
     }
-    else{
+    else {
         alert("Es sind noch Eingaben ungültig:")
     }
     return status;

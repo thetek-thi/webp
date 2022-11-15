@@ -1,24 +1,16 @@
-
-//document.getElementById("register").addEventListener("submit", checkForm);
-// TODO: Username existiert schon fehlt noch 
 // TODO: Einfügen in main.js
-
-
-
-
-//function checkUser() {
-//    var username = document.register.username.value;
-//    let status = false;
-//    console.log()
-//    if ((username.length < 3) || (checkUserExistence() == false)) {
-//        //alert("Der gewählte Nutzername ist zu kurz, er muss mindestens 3 Zeichen lang sein.");
-//        console.log("Nutzername ist zu kurz oder Name gibt es schon")
-//    } else {
-//        status = true;
-//    }
-//    return status;
-//}
-
+function checkColor() {
+    let color = document.getElementById("username").style.borderColor;
+    console.log(color)
+    let result = false;
+    if (color === "green") {
+        result = true;
+    }
+    else {
+        result = false;
+    }
+    return result;
+}
 function checkUserExistence() {
     var username = document.register.username.value;
     var xmlhttp = new XMLHttpRequest();
@@ -30,12 +22,12 @@ function checkUserExistence() {
                 document.getElementById("username").style.borderColor = "red";
                 document.getElementById("username").style.borderWidth = "3px";
             } else if (xmlhttp.status == 404) {
-                if(username.length <3){
-                document.getElementById("username").style.borderColor = "red";
-                document.getElementById("username").style.borderWidth = "3px";
-                } else{
-                document.getElementById("username").style.borderColor = "green";
-                document.getElementById("username").style.borderWidth = "3px";
+                if (username.length < 3) {
+                    document.getElementById("username").style.borderColor = "red";
+                    document.getElementById("username").style.borderWidth = "3px";
+                } else {
+                    document.getElementById("username").style.borderColor = "green";
+                    document.getElementById("username").style.borderWidth = "3px";
                 }
                 console.log("Does not exist");
             }
@@ -82,11 +74,11 @@ function checkConfirm() {
 function submission() {
     let status = false;
 
-    if (checkPassword() && checkUser() && checkConfirm() && checkUserExistence()) {
+    if (checkPassword() && checkColor() && checkConfirm()) {
         status = true;
     }
     else {
-        alert("Es sind noch Eingaben ungültig:")
+        alert("Es sind noch Eingaben ungültig")
     }
     return status;
 }

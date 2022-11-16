@@ -19,13 +19,13 @@
     <fieldset>
       <legend>Register</legend>
       <label for="username">Username</label>
-      <input class="smallinput" type="text" placeholder="Username" id="username" name="username" onchange="checkUserExistence()" required>
+      <input class="smallinput" type="text" placeholder="Username" id="username" name="username" oninput="checkUserExistence()" required>
       <br>
       <label for="password">Password</label>
-      <input class="smallinput" type="password" placeholder="Password" id="password" name="password" onchange="checkPassword()" required>
+      <input class="smallinput" type="password" placeholder="Password" id="password" name="password" oninput="checkPassword()" required>
       <br>
       <label for="confirmPassword">Confirm Password</label>
-      <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" onchange="checkConfirm()" required>
+      <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" oninput="checkConfirm()" required>
     </fieldset>
     <p class="center">
       <button type="button" class="nomaxwidthonmobile">Cancel</button>

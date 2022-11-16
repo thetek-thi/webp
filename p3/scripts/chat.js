@@ -25,8 +25,8 @@ const updateMessages = async () => {
       const time = new Date(msg.time)
       // i hate the js date api
       let timefmt = `${time.getFullYear()}-${time.getMonth()}-${time.getDate()}` == `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
-        ? `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
-        : `${time.getFullYear()}-${time.getMonth()}-${(time.getDate() < 10 ? '0' : '') + time.getDate()} &nbsp; ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+        ? `${(time.getHours() < 10 ? '0' : '') + time.getHours()}:${(time.getMinutes() < 10 ? '0' : '') + time.getMinutes()}:${(time.getSeconds() < 10 ? '0' : '') + time.getSeconds()}`
+        : `${time.getFullYear()}-${(time.getMonth() < 10 ? '0' : '') + time.getMonth()}-${(time.getDate() < 10 ? '0' : '') + time.getDate()} &nbsp; ${(time.getHours() < 10 ? '0' : '') + time.getHours()}:${(time.getMinutes() < 10 ? '0' : '') + time.getMinutes()}:${(time.getSeconds() < 10 ? '0' : '') + time.getSeconds()}`
       msgElem.innerHTML = `<b>${msg.from}</b>: ${escapeHtml(msg.msg)} &nbsp; <small class="timelabel">${timefmt}</small>`
       chatview.appendChild(msgElem)
     }
@@ -45,8 +45,10 @@ const sendMessage = (message, to) => {
 }
 
 const sendMessageHandler = (e) => {
-  const msg = document.getElementById('msginput').value
+  const msginput = document.getElementById('msginput')
+  const msg = msginput.value
   sendMessage(msg, 'Jerry')
+  msginput.value = ''
 }
 
 const escapeHtml = (str) => {

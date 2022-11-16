@@ -14,10 +14,11 @@ function loadUsers() {
             dataliste = document.getElementById('listoffriends');
             while (dataliste.lastChild) dataliste.removeChild(dataliste.lastChild)
             data.forEach(element => {
-                if (!element.toLowerCase().startsWith(input.toLowerCase())) return;
-                let listopt = document.createElement('option');
-                listopt.innerHTML = element;
-                dataliste.appendChild(listopt);
+                if (element.toLowerCase().startsWith(input.toLowerCase())) {
+                    let listopt = document.createElement('option');
+                    listopt.innerHTML = element;
+                    dataliste.appendChild(listopt);
+                }
             });
         }
     }

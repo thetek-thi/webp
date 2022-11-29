@@ -6,7 +6,6 @@ import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core'
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
 })
-
 export class ChatComponent implements OnInit, AfterViewChecked {
   // DIV für Nachrichten (s. Template) als Kind-Element für Aufrufe (s. scrollToBottom()) nutzen
   @ViewChild('messagesDiv') private myScrollContainer: ElementRef

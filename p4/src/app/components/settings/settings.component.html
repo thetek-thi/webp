@@ -4,40 +4,40 @@
 
 <br>
 
-<div>
+<form>
   <fieldset>
     <legend>Base Data</legend>
 
     <label for="firstname">First Name</label>
-    <input class="smallinput" id="firstname" type="text" name="firstname" placeholder="Your name">
+    <input class="smallinput" id="firstname" type="text" name="firstname" placeholder="Your name" [(ngModel)]="firstName">
 
     <br>
 
     <label for="lastname">Last Name</label>
-    <input class="smallinput" id="lastname" type="text" name="lastname" placeholder="Your surname">
+    <input class="smallinput" id="lastname" type="text" name="lastname" placeholder="Your surname" [(ngModel)]="lastName">
 
     <br>
 
     <label for="Coffee or Tea">Coffee or Tea?</label>
-    <select class="smallinput" name="coffee_or_tea" id="coffee_or_tea">
-      <option value="neither_nor">Neither nor</option>
-      <option value="Coffee">Coffee</option>
-      <option value="Tea">Tea</option>
+    <select class="smallinput" name="coffee_or_tea" id="coffee_or_tea" [(ngModel)]="coffeeOrTea">
+      <option [selected]="coffeeOrTea == 'neither_nor'" [ngValue]="'neither_nor'">Neither nor</option>
+      <option [selected]="coffeeOrTea == 'coffee'" [ngValue]="'coffee'">Coffee</option>
+      <option [selected]="coffeeOrTea == 'tea'" [ngValue]="'tea'">Tea</option>
     </select>
   </fieldset>
 
   <fieldset>
     <legend>Tell Something About You</legend>
-    <textarea name="sth_about_u" id="sth_about_u" placeholder="Leave a comment here"></textarea>
+    <textarea name="sth_about_u" id="sth_about_u" placeholder="Leave a comment here" #about="ngModel" [(ngModel)]="sthAboutYou"></textarea>
   </fieldset>
 
   <fieldset>
     <legend>Prefered Chat Layout</legend>
 
-    <input class="radio" type="radio" id="Layout1" name="Layout" value="Layout1">
+    <input [value]="'one_line'" [(ngModel)]="layout" class="radio" type="radio" id="Layout1" name="Layout" value="Layout1">
     <label class="radio" for="Layout1">Username and message in one line</label><br>
 
-    <input class="radio" type="radio" id="Layout2" name="Layout" value="Layout2">
+    <input [value]="'separate_lines'" [(ngModel)]="layout" class="radio" type="radio" id="Layout2" name="Layout" value="Layout2">
     <label class="radio" for="Layout2">Username and message in separated lines</label>
   </fieldset>
 
@@ -45,6 +45,6 @@
 
   <div class="center">
     <a href="./friends.html"><button type="button" class="nomaxwidthonmobile">Cancel</button></a>
-    <button type="button" class="nomaxwidthonmobile">Save</button>
+    <button (click)="send()" type="button" class="nomaxwidthonmobile bluebutton">Save</button>
   </div>
-</div>
+</form>

@@ -10,7 +10,7 @@ import { ContextService } from './context.service'
 @Injectable({ providedIn: 'root' })
 export class BackendService {
   private baseUrl = 'https://online-lectures-cs.thi.de/chat/full/'
-  private serverId = '56ce2af0-ee84-4e78-85bc-6bba6c51c739'
+  private serverId = 'b24b2582-58cc-49c7-b881-0a191d9a549d'
   private restServerUrl = this.baseUrl + this.serverId + '/'
   private headers: any // header for token
 

@@ -1,4 +1,4 @@
-<script src="./scripts/register.js"></script>
+<!--script src="./scripts/register.js"></script>-->
 <img src="img/user.png" alt="user icon" width="100px" class="center round">
 <h1 class="center">Register yourself</h1>
 <form name="register" action="friends.html" onsubmit="return submission()">
@@ -6,18 +6,18 @@
     <legend>Register</legend>
     <label for="username">Username</label>
     <input class="smallinput" type="text" placeholder="Username" id="username" name="username"
-      oninput="checkUserExistence()" required>
+      (input)="checkUserExistence()" required>
     <br>
     <label for="password">Password</label>
     <input class="smallinput" type="password" placeholder="Password" id="password" name="password"
-      oninput="checkPassword()" required>
+      (input)="checkPassword()" required>
     <br>
     <label for="confirmPassword">Confirm Password</label>
     <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword"
-      oninput="checkConfirm()" required>
+      (input)="checkConfirm()" required>
   </fieldset>
   <p class="center">
     <button type="button" class="nomaxwidthonmobile">Cancel</button>
-    <input type="submit" class="nomaxwidthonmobile" value="Create Account">
+    <input type="submit" class="nomaxwidthonmobile" value="Create Account" [disabled]="!usernameOk || !passwordOk">
   </p>
 </form>

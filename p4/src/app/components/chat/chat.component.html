@@ -1,8 +1,18 @@
-<!-- IF YOU HAVE YOUR INDENT SIZE SET TO ANYTHING OTHER THAN 2 SPACES, I WILL STEAL YOUR KNEECAPS.  -->
-
-<h1>ChatComponent works!</h1>
-
-<div #messagesDiv>
-  <!-- hier kommen die Nachrichten rein -->
-  Nachricht 1
+<h1>Chat with Jerry</h1>
+<p>
+  <a href="friends.html">&lt; Back</a> |
+  <a href="profile.html">Profile</a> |
+  <a class="spec1" href="friends.html">Remove Friend</a>
+</p>
+<div class="borderaround" id="chatview">
+  <p *ngIf="messages === null"><small>Loading...</small></p>
+  <p *ngFor="let i of messages">
+    <b>{{i.from}}: </b>
+    <span>{{i.msg}}</span>
+    <small class="timelabel"> {{i.time | date:'yyyy-MM-dd HH:mm:ss'}}</small>
+  </p>
 </div>
+<p>
+  <input class="biginput nomaxwidthonmobile" type="text" id="msginput" placeholder="New Message" name="msg">
+  <button class="bluebutton nomaxwidthonmobile" type="button" (click)="sendMessage()">Send</button>
+</p>

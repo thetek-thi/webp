@@ -9,8 +9,8 @@ import { ContextService } from './context.service'
 
 @Injectable({ providedIn: 'root' })
 export class BackendService {
-  private baseUrl = 'https://online-lectures-cs.thi.de/chat/full/'
-  private serverId = 'b24b2582-58cc-49c7-b881-0a191d9a549d'
+  private baseUrl = 'https://online-lectures-cs.thi.de/chat/'
+  private serverId = 'ee511218-1519-4480-9f16-aae59021ff88'
   private restServerUrl = this.baseUrl + this.serverId + '/'
   private headers: any // header for token
 
@@ -57,7 +57,7 @@ export class BackendService {
     return observable
   }
 
-  public userExists(username: string): Observable<boolean> {
+  userExists(username: string): Observable<boolean> {
     const observable = new Observable<boolean>(subscriber => {
       const serverCall = this.httpClient.get(this.restServerUrl + 'user/' + username)
       serverCall.subscribe({

@@ -1,26 +1,23 @@
 <!--script src="./scripts/register.js"></script>-->
 <img src="img/user.png" alt="user icon" width="100px" class="center round">
 <h1 class="center">Register yourself</h1>
-<form name="register" action="friends.html" #todoForm="ngForm" onsubmit="return submission()">
+<form name="register" action="friends.html"  onsubmit="return submission()">
   <fieldset>
     <legend>Register</legend>
     <label for="username">Username</label>
-    <input class="smallinput" type="text" placeholder="Username" id="username" name="username" [(ngmodel)]="username" #usernameControl="ngModel"
-      (input)="checkUserExistence()" required>
-      <div class="error" [hidden]="usernameControl.pristine || usernameControl.valid">username Fehlerhaft!</div>
+    <input class="smallinput" type="text" placeholder="Username" id="username" name="username"
+       required>
     <br>
     <label for="password">Password</label>
-    <input class="smallinput" type="password" placeholder="Password" id="password" name="password" [(ngModel)]="password" #passwordControl="ngModel"
-      (input)="checkPassword()" required>
-      <div class="error" [hidden]="passwordControl.pristine || passwordControl.valid">Passwort Fehlerhaft oder unzulässig!</div>
+    <input class="smallinput" type="password" placeholder="Password" id="password" name="password"  
+      required>
     <br>
     <label for="confirmPassword">Confirm Password</label>
-    <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmpassword" #confirmpasswordControl="ngModel"
-      (input)="checkConfirm()" required>
-      <div class="error" [hidden]="confirmpasswordControl.pristine || confirmpasswordControl.valid">Passwortörter stimmen nicht überein!</div>
+    <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword"
+       required>
   </fieldset>
   <p class="center">
     <button type="button" class="nomaxwidthonmobile">Cancel</button>
-    <input type="submit" class="nomaxwidthonmobile" value="Create Account" [disabled]="!usernameOk || !passwordOk">
+    <input type="submit" class="nomaxwidthonmobile" value="Create Account" >
   </p>
 </form>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core'
-import { Router } from '@angular/router'
-import { User } from './../../models/User'
+import { ActivatedRoute } from '@angular/router'
 import { Message } from './../../models/Message'
 import { BackendService } from './../../services/backend.service'
 
@@ -16,7 +15,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private backendService: BackendService,
-    private router: Router,
+    private route: ActivatedRoute,
   ) {
     this.chatview = new ElementRef(null)
   }
@@ -56,5 +55,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       } else
         this.loadMessages()
     })
+
+    this.route.params.subscribe(console.log)
   }
 }

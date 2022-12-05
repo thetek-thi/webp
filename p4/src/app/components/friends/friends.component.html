@@ -1,3 +1,22 @@
 <!-- IF YOU HAVE YOUR INDENT SIZE SET TO ANYTHING OTHER THAN 2 SPACES, I WILL STEAL YOUR KNEECAPS.  -->
 
-<h1>FriendsComponent works!</h1>
+<h2 class="big">Friends</h2>
+<a href="/logout">&lt; Logout</a> | <a href="/settings">Settings</a>
+<hr>
+<ul>
+  <li *ngFor="let i of friends"><a href="/chat/{{i.username}}">{{i.username}} ({{i.unreadMessages}})</a></li>
+</ul>
+<p *ngIf="friends.length == 0">You have no friends.</p>
+<hr>
+<h2>New Requests</h2>
+<ol>
+  <li *ngFor="let i of pendingFriendRequests"><a (click)="acceptFriend(i.username)">Friend request from <b>{{i.username}}</b></a></li>
+</ol>
+<hr>
+<form name="form1" id="form1">
+  <input class="biginput" type="text" name="addFriend" placeholder="Add Friend to List" list="listoffriends" id="friendinput" autocomplete="off" [(ngModel)]="addFriendName" (input)="updateCompletions()">
+  <datalist id="listoffriends">
+    <option *ngFor="let i of friendCompletions" value="{{i}}"></option>
+  </datalist>
+  <button class="nomaxwidthonmobile bluebutton" type="submit" id="button01" (click)="addFriend()">Add</button>
+</form>

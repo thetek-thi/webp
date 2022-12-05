@@ -17,7 +17,7 @@
     <div style="color:red" *ngIf="confirmPasswdValid === false">Passwords do not match.</div>
   </fieldset>
   <p class="center">
-    <button type="button" class="nomaxwidthonmobile">Cancel</button>
+    <button type="button" class="nomaxwidthonmobile" (click)="goToLogin()">Cancel</button>
     <button type="button" class="nomaxwidthonmobile bluebutton" (click)="sendRegister()">Create Account</button>
   </p>
 </form>

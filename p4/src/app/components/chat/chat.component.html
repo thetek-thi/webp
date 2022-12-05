@@ -1,8 +1,8 @@
-<h1>Chat with Jerry</h1>
+<h1>Chat with {{user}}</h1>
 <p>
-  <a href="friends.html">&lt; Back</a> |
-  <a href="profile.html">Profile</a> |
-  <a class="spec1" href="friends.html">Remove Friend</a>
+  <a [routerLink]="['/friends']">&lt; Back</a> |
+  <a [routerLink]="['/profile/' + user]">Profile</a> |
+  <a class="spec1" (click)="removeFriend()">Remove Friend</a>
 </p>
 <div class="borderaround" id="chatview">
   <p *ngIf="messages === null"><small>Loading...</small></p>
@@ -13,6 +13,6 @@
   </p>
 </div>
 <p>
-  <input class="biginput nomaxwidthonmobile" type="text" id="msginput" placeholder="New Message" name="msg">
+  <input class="biginput nomaxwidthonmobile" type="text" id="msginput" placeholder="New Message" name="msg" [(ngModel)]="message">
   <button class="bluebutton nomaxwidthonmobile" type="button" (click)="sendMessage()">Send</button>
 </p>

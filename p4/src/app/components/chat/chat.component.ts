@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Message } from './../../models/Message'
 import { BackendService } from './../../services/backend.service'
+import { IntervalService } from './../../services/interval.service'
 
 @Component({
   selector: 'app-chat',
@@ -12,10 +13,14 @@ import { BackendService } from './../../services/backend.service'
 export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('chatview') private chatview: ElementRef
   messages: Message[] | null = null
+  user = ''
+  message = ''
 
   constructor(
     private backendService: BackendService,
+    private intervalService: IntervalService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.chatview = new ElementRef(null)
   }
@@ -31,31 +36,38 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage() {
-    this.backendService.sendMessage('bar', 'bli bla blub').subscribe(ok => {
+    this.backendService.sendMessage(this.user, this.message).subscribe(_ => {
       this.loadMessages()
     })
+    this.message = ''
   }
 
   loadMessages() {
-    this.backendService.listMessages('bar').subscribe(messages => {
+    this.backendService.listMessages(this.user).subscribe(messages => {
       this.messages = messages
+    })
+  }
+
+  removeFriend() {
+    this.backendService.removeFriend(this.user).subscribe(_ => {
+      this.router.navigate(['/friends'])
     })
   }
 
   ngOnInit() {
     this.scrollToBottom()
     this.backendService.loadCurrentUser().subscribe(user => {
-      if (user === null) {
-        this.backendService.login('foo', '12345678').subscribe(ok => {
-          if (ok)
-            this.loadMessages()
-          else
-            console.log('failed to login')
-        })
-      } else
+      if (!user)
+        // login required because angular is a piece of shit and BackendService doesnt persist
+        this.backendService.login('Tom', '12345678').subscribe(_ => this.loadMessages())
+      else
         this.loadMessages()
     })
 
-    this.route.params.subscribe(console.log)
+    this.route.params.subscribe(params => {
+      this.user = params['username']
+    })
+
+    this.intervalService.setInterval("ChatComponent", () => this.loadMessages())
   }
 }

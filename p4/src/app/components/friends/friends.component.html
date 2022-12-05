@@ -1,10 +1,10 @@
 <!-- IF YOU HAVE YOUR INDENT SIZE SET TO ANYTHING OTHER THAN 2 SPACES, I WILL STEAL YOUR KNEECAPS.  -->
 
 <h2 class="big">Friends</h2>
-<a href="/logout">&lt; Logout</a> | <a href="/settings">Settings</a>
+<a href="/logout">&lt; Logout</a> | <a [routerLink]="['/settings']">Settings</a>
 <hr>
 <ul>
-  <li *ngFor="let i of friends"><a href="/chat/{{i.username}}">{{i.username}} ({{i.unreadMessages}})</a></li>
+  <li *ngFor="let i of friends"><a [routerLink]="['/chat/' + i.username]">{{i.username}} ({{i.unreadMessages}})</a></li>
 </ul>
 <p *ngIf="friends.length == 0">You have no friends.</p>
 <hr>

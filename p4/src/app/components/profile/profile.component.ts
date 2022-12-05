@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'
+import { BackendService } from './../../services/backend.service'
 
 @Component({
   selector: 'app-profile',
@@ -7,14 +8,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile.component.css', './../../app.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  user = ''
+
   constructor(
+    private backendService: BackendService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const username = params['username']
-      // TODO
+      this.user = params['username']
     })
   }
 }

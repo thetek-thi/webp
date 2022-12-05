@@ -5,19 +5,19 @@
   <fieldset>
     <legend>Register</legend>
     <label for="username">Username</label>
-    <input class="smallinput" type="text" placeholder="Username" id="username" name="username"
-       required>
+    <input name="username" class="smallinput" type="text" placeholder="Username" [(ngModel)]="username" (input)="checkUsername()" [class.valid-input]="usernameValid === true" [class.invalid-input]="usernameValid === false">
+    <div style="color:red" *ngIf="usernameValid == false">Username needs to be at least 3 letters long and cannot already exist.</div>
     <br>
     <label for="password">Password</label>
-    <input class="smallinput" type="password" placeholder="Password" id="password" name="password"  
-      required>
+    <input name="password" class="smallinput" type="password" placeholder="Password" [(ngModel)]="passwd" (input)="checkPasswd()" [class.valid-input]="passwdValid === true" [class.invalid-input]="passwdValid === false">
+    <div style="color:red" *ngIf="passwdValid === false">The needs to be at least 8 characters long.</div>
     <br>
     <label for="confirmPassword">Confirm Password</label>
-    <input class="smallinput" type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword"
-       required>
+    <input name="confirmpassword" class="smallinput" type="password" placeholder="Confirm Password" [(ngModel)]="confirmPasswd" (input)="checkConfirmPasswd()" [class.valid-input]="confirmPasswdValid === true" [class.invalid-input]="confirmPasswdValid === false">
+    <div style="color:red" *ngIf="confirmPasswdValid === false">Passwords do not match.</div>
   </fieldset>
   <p class="center">
     <button type="button" class="nomaxwidthonmobile">Cancel</button>
-    <input type="submit" class="nomaxwidthonmobile" value="Create Account" >
+    <button type="button" class="nomaxwidthonmobile bluebutton" (click)="sendRegister()">Create Account</button>
   </p>
 </form>

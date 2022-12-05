@@ -62,10 +62,7 @@ export class BackendService {
       const serverCall = this.httpClient.get(this.restServerUrl + 'user/' + username)
       serverCall.subscribe({
         next: _ => subscriber.next(true), // yield result to caller
-        error: err => {
-          console.log('backend service error: ' + err)
-          subscriber.next(false) // yield result to caller
-        },
+        error: _ => subscriber.next(false), // yield result to caller
       })
     })
 

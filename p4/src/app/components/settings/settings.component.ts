@@ -20,11 +20,23 @@ export class SettingsComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.backendService.loadCurrentUser().subscribe(u => {
+      if (u) {
+        const usefulUser = JSON.parse(JSON.stringify(u)) // the model files are not acually models of the sent data. thanks for nothing, <insert lecturer name here>.
+        this.sthAboutYou = usefulUser['description'] ?? ''
+        this.firstName = usefulUser['firstName'] ?? u.username
+        this.lastName = usefulUser['lastName'] ?? ''
+        this.coffeeOrTea = usefulUser['coffeOrTea'] ?? '0'
+        this.layout = usefulUser['layout'] ?? 'one_line'
+      }
+    })
+  }
 
   send() {
     const profile = new Profile(this.firstName, this.lastName, this.coffeeOrTea, this.sthAboutYou, this.layout)
-    this.backendService.saveCurrentUserProfile(profile)
-    this.router.navigate(['/friends'])
+    this.backendService.saveCurrentUserProfile(profile).subscribe(_ => {
+      this.router.navigate(['/friends'])
+    })
   }
 }

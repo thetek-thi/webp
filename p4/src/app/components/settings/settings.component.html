@@ -20,9 +20,9 @@
 
     <label for="Coffee or Tea">Coffee or Tea?</label>
     <select class="smallinput" name="coffee_or_tea" id="coffee_or_tea" [(ngModel)]="coffeeOrTea">
-      <option [selected]="coffeeOrTea == 'neither_nor'" [ngValue]="'neither_nor'">Neither nor</option>
-      <option [selected]="coffeeOrTea == 'coffee'" [ngValue]="'coffee'">Coffee</option>
-      <option [selected]="coffeeOrTea == 'tea'" [ngValue]="'tea'">Tea</option>
+      <option [selected]="coffeeOrTea == '0'" [ngValue]="'0'">Neither nor</option>
+      <option [selected]="coffeeOrTea == '1'" [ngValue]="'1'">Coffee</option>
+      <option [selected]="coffeeOrTea == '2'" [ngValue]="'2'">Tea</option>
     </select>
   </fieldset>
 

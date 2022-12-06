@@ -45,6 +45,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   loadMessages() {
     this.backendService.listMessages(this.user).subscribe(messages => {
       this.messages = messages
+      this.scrollToBottom()
     })
   }
 

@@ -1,7 +1,7 @@
 <!-- IF YOU HAVE YOUR INDENT SIZE SET TO ANYTHING OTHER THAN 2 SPACES, I WILL STEAL YOUR KNEECAPS.  -->
 
 <h1>Profile of {{user}}</h1>
-<a [routerLink]="['/chat']">&lt; Back to Chat</a>
+<a (click)="backToChat()">&lt; Back to Chat</a>
 |
 <a class="spec1" [routerLink]="['/friends']">Remove Friend</a>
 
@@ -10,17 +10,13 @@
 <img src="/assets/img/profile.png" class="aside-left">
 
 <div class="aside-right">
-  <div>
-    woher bekomme ich die profile infos? im backend service gibts nix, und bei
-    "current user" wie im arbeitsblatt beschrieben wird nix mitgeliefert (User
-    kann ja nur username, friends und requests akzeptieren). ¯\_(·_·)_/¯
-  </div>
+  <div>{{profile.description}}</div>
 
   <br><br>
 
   <b>Coffee or Tea?</b>
-  <blockquote>Tea</blockquote>
+  <blockquote>{{profile.coffeeOrTea}}</blockquote>
 
   <b>Name</b>
-  <blockquote>Thomas</blockquote>
+  <blockquote>{{profile.firstName}} {{profile.lastName}}</blockquote>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { BackendService } from './../../services/backend.service'
 import { IntervalService } from './../../services/interval.service'
@@ -9,7 +9,7 @@ import { Friend } from './../../models/Friend'
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.css', './../../app.component.css'],
 })
-export class FriendsComponent implements OnInit {
+export class FriendsComponent implements OnInit, OnDestroy {
   friends: Friend[] = []
   pendingFriendRequests: Friend[] = []
   addFriendName: string = ''
@@ -23,6 +23,10 @@ export class FriendsComponent implements OnInit {
 
   ngOnInit() {
     this.intervalService.setInterval("FriendsComponent", () => this.updateFriends())
+  }
+
+  ngOnDestroy() {
+    this.intervalService.clearIntervals()
   }
 
   updateFriends() {
@@ -46,6 +50,12 @@ export class FriendsComponent implements OnInit {
 
   acceptFriend(username: string) {
     this.backendService.acceptFriendRequest(username).subscribe(_ => {
+      this.updateFriends()
+    })
+  }
+
+  declineFriend(username: string) {
+    this.backendService.dismissFriendRequest(username).subscribe(_ => {
       this.updateFriends()
     })
   }

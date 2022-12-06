@@ -4,7 +4,7 @@
   <a [routerLink]="['/profile/' + user]">Profile</a> |
   <a class="spec1" (click)="removeFriend()">Remove Friend</a>
 </p>
-<div class="borderaround" id="chatview">
+<div class="borderaround" id="chatview" #chatview>
   <p *ngIf="messages === null"><small>Loading...</small></p>
   <p *ngFor="let i of messages">
     <b>{{i.from}}: </b>

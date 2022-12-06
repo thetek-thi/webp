@@ -10,7 +10,11 @@
 <hr>
 <h2>New Requests</h2>
 <ol>
-  <li *ngFor="let i of pendingFriendRequests"><a (click)="acceptFriend(i.username)">Friend request from <b>{{i.username}}</b></a></li>
+  <li *ngFor="let i of pendingFriendRequests">
+    Friend request from <b>{{i.username}}</b> &ndash;
+    <a (click)="acceptFriend(i.username)">Accept</a> &ndash;
+    <a (click)="declineFriend(i.username)" class="spec1">Decline</a>
+  </li>
 </ol>
 <hr>
 <form name="form1" id="form1">

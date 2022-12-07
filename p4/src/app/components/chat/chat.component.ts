@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   messages: Message[] | null = null
   user = ''
   message = ''
+  loggedInUser= ''
 
   constructor(
     private backendService: BackendService,
@@ -58,11 +59,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     this.scrollToBottom()
     this.backendService.loadCurrentUser().subscribe(user => {
-      if (!user)
-        // login required because angular is a piece of shit and BackendService doesnt persist
-        this.backendService.login('Tom', '12345678').subscribe(_ => this.loadMessages())
-      else
-        this.loadMessages()
+      this.loggedInUser = user?.username ?? ''
+      this.loadMessages()
     })
 
     this.route.params.subscribe(params => {

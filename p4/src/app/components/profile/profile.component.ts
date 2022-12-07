@@ -27,7 +27,11 @@ export class ProfileComponent implements OnInit {
           const desc = usefulUser['description'] ?? 'User did not set a description yet.'
           const firstName = usefulUser['firstName'] ?? this.user
           const lastName = usefulUser['lastName'] ?? ''
-          const coffeeOrTea = usefulUser['coffeOrTea'] ?? 'User did not set a preference yet.'
+          const coffeeOrTeaRaw = usefulUser['coffeeOrTea']
+          let coffeeOrTea = 'User did not set a preference yet'
+          if (coffeeOrTeaRaw === '0') coffeeOrTea = "Neither nor"
+          else if (coffeeOrTeaRaw === '1') coffeeOrTea ="Coffee"
+          else if (coffeeOrTeaRaw === '2') coffeeOrTea = 'Tea' 
           const layout = usefulUser['layout'] ?? 'idkwhattoputhere'
           this.profile = new Profile(firstName, lastName, coffeeOrTea, desc, layout)
         }

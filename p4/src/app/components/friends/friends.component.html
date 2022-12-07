@@ -4,7 +4,8 @@
 <a href="/logout">&lt; Logout</a> | <a [routerLink]="['/settings']">Settings</a>
 <hr>
 <ul>
-  <li *ngFor="let i of friends"><a [routerLink]="['/chat/' + i.username]">{{i.username}} ({{i.unreadMessages}})</a></li>
+  <li *ngFor="let i of friends"><a [routerLink]="['/chat/' + i.username]">{{i.username}}
+    <span class="msgnum"> ({{i.unreadMessages}})</span></a></li>
 </ul>
 <p *ngIf="friends.length == 0">You have no friends.</p>
 <hr>

@@ -1,5 +1,8 @@
 <html lang="en">
-<?php require '../start.php'; ?>
+<?php
+require '../start.php';
+session_unset();
+?>
 <head>
     <meta charset="UTF-8">
     <title>logout screen</title>

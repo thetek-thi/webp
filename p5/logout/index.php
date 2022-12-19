@@ -1,4 +1,5 @@
 <html lang="en">
+<?php require '../start.php'; ?>
 <head>
     <meta charset="UTF-8">
     <title>logout screen</title>

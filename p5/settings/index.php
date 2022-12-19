@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require '../start.php'; ?>
 <!--Input, Texterea, Select-Elemente, Radio Button,Button,-->
 <html>
     <head>

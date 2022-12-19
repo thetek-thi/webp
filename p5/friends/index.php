@@ -20,6 +20,12 @@ if (isset($_GET['dismiss']))
 ?>
 <html lang="de">
 <head>
+<script>
+window.chatToken = "<?= $_SESSION['chat_token'] ?>";
+window.chatCollectionId = "<?= CHAT_SERVER_ID ?>";
+window.chatServer = "<?= CHAT_SERVER_URL ?>";
+</script>
+<script src="./script.js"></script>
     <meta charset="UTF-8">
     <title>friendslist</title>
     <link rel="stylesheet" href="../style/main.css">
@@ -30,18 +36,18 @@ if (isset($_GET['dismiss']))
         <h2 class="big">Friends</h2>
         <a href="../logout">&lt; Logout</a> | <a href="../settings">Settings</a>
         <hr>
-        <ul>
-            <?php
-            foreach ($friends as $f)
-                if ($f->get_status() === 'accepted') {
-                    $u = $f->get_username();
-                    $m = '?';
-                    foreach ($unread as $k => $v)
-                        if ($k === $u)
-                            $m = $v;
-                    echo "<li><a href=\"../chat?user=$u\">$u<span style=\"float:right;\">($m)</span></a></li>";
-                }
-            ?>
+        <ul id="addfriendshere">
+              <?php
+//            foreach ($friends as $f)
+//                if ($f->get_status() === 'accepted') {
+//                    $u = $f->get_username();
+//                    $m = '?';
+//                    foreach ($unread as $k => $v)
+//                        if ($k === $u)
+//                            $m = $v;
+//                    echo "<li><a href=\"../chat?user=$u\">$u<span style=\"float:right;\">($m)</span></a></li>";
+//                }
+              ?>
         </ul>
         <hr>
         <h2>New Requests</h2>

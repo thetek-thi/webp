@@ -19,7 +19,7 @@
                 <input class="smallinput" type="text" name="username" placeholder="Username">
                 <br>
                 <label for="Password">Password</label>
-                <input class="smallinput" type="text" name="password" placeholder="Password">
+                <input class="smallinput" type="password" name="password" placeholder="Password">
                 <?php
                 if (isset($_GET['error']))
                     echo '<p style="color:red;">Incorrect username or password!</p>';

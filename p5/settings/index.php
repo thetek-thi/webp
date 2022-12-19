@@ -59,7 +59,7 @@ $userdata = $service->load_user($user);
             <br>
 
             <div class="center">
-                <a href="./friends.html"><button type="button" class="nomaxwidthonmobile">Cancel</button></a>
+                <a href="../friends"><button type="button" class="nomaxwidthonmobile">Cancel</button></a>
                 <input type="submit" value="Save" class="nomaxwidthonmobile">
             </div>
         </form>

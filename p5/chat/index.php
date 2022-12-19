@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 require '../start.php';
-if (!isset($_GET['chat_token'])) {
+if (!isset($_SESSION['chat_token'])) {
   header('Location: ../login');
   exit();
 }
@@ -16,9 +16,11 @@ else {
 <head>
 <script>
 window.chatToken = "<?= $_SESSION['chat_token'] ?>";
+window.chatUser = "<?= $_GET['user'] ?>";
 window.chatCollectionId = "<?= CHAT_SERVER_ID ?>";
 window.chatServer = "<?= CHAT_SERVER_URL ?>";
 </script>
+<script type="text/javascript" src="./script.js"></script>
   <meta charset="UTF-8">
   <title>Chat with Jerry</title>
   <link rel="stylesheet" href="../style/main.css">

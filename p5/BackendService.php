@@ -25,6 +25,7 @@ class BackendService {
         try {
             $res = HttpClient::post($this->get_url('login'), array('username' => $username, 'password' => $password));
             $_SESSION['chat_token'] = $res->{'token'};
+            $_SESSION['user'] = $username;
             return true;
         } catch (\Exception $e) {
             error_log($e);
@@ -36,6 +37,7 @@ class BackendService {
         try {
             $res = HttpClient::post($this->get_url('register'), array('username' => $username, 'password' => $password));
             $_SESSION['chat_token'] = $res->{'token'};
+            $_SESSION['user'] = $username;
             return true;
         } catch (\Exception $e) {
             error_log($e);
@@ -55,7 +57,7 @@ class BackendService {
 
     function save_user(mixed $data): mixed {
         try {
-            return HttpClient::post($this->get_url('user'), data, $_SESSION['chat_token']);
+            return HttpClient::post($this->get_url('user'), $data, $_SESSION['chat_token']);
         } catch (\Exception $e) {
             error_log($e);
         }

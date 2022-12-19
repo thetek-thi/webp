@@ -22,11 +22,17 @@ class User implements JsonSerializable {
     function get_friends():       string|null { return $this->friends;       }
     function get_requests():      string|null { return $this->requests;      }
 
+    function set_description  (string|null $v) { $this->description   = $v; }
+    function set_first_name   (string|null $v) { $this->first_name    = $v; }
+    function set_last_name    (string|null $v) { $this->last_name     = $v; }
+    function set_coffee_or_tea(string|null $v) { $this->coffee_or_tea = $v; }
+    function set_layout       (string|null $v) { $this->layout        = $v; }
+
     function jsonSerialize(): mixed {
         return get_object_vars($this);
     }
 
-    static function fromJson(object $data): User {
+    static function fromJson(mixed $data): User {
 //      THIS IS A HORRILBE SOLUTION:
 //      foreach ($data as $key => $value) {
 //          $user->{$key} = $value;

@@ -10,7 +10,7 @@
 <body>
     <p>
         <h2 class="big">Friends</h2>
-        <a href="logout.html">&lt; Logout</a> | <a href="settings.html">Settings</a>
+        <a href="../logout">&lt; Logout</a> | <a href="../settings">Settings</a>
         <hr>
         <ul>
             <li><a href="chat.html">Tom (3)</a></li>

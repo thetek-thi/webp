@@ -10,9 +10,9 @@
 <body>
   <h1>Chat with Jerry</h1>
   <p>
-    <a href="friends.html">&lt; Back</a> |
-    <a href="profile.html">Profile</a> |
-    <a class="spec1" href="friends.html">Remove Friend</a>
+    <a href="../friends">&lt; Back</a> |
+    <a href="../profile?user=">Profile</a> |
+    <a class="spec1" href="../friends?remove=">Remove Friend</a>
   </p>
   <div class="borderaround" id="chatview">
     <p><small class="timelabel">Loading...</small></p>

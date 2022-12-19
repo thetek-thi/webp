@@ -113,13 +113,14 @@ class BackendService {
         return null;
     }
 
-    function user_exists(string $username): mixed {
+    function user_exists(string $username): bool {
         try {
-            return HttpClient::get($this->get_url('user') . '/' . $username, $_SESSION['chat_token']);
+            $res = HttpClient::get($this->get_url('user') . '/' . $username, $_SESSION['chat_token']);
+            return json_encode($res) !== '{}';
         } catch (\Exception $e) {
             error_log($e);
+            return false;
         }
-        return null;
     }
 
     function get_unread(): mixed {

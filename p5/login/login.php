@@ -10,11 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else
     $failed = true;
 
-if ($failed)
+if ($failed) {
     header('Location: ../login?error');
+    exit();
+}
 
-if ($service->login($username, $password))
+if ($service->login($username, $password)) {
     header('Location: ../friends');
-else
+    exit();
+} else {
     header('Location: ../login?error');
+    exit();
+}
 ?>

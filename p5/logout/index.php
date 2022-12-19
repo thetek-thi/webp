@@ -17,7 +17,7 @@ session_unset();
         <br>
         <p class="center">See u !</p>
         <br><br>
-        <a href="login.html" class="center">Login again</a>
+        <a href="../login" class="center">Login again</a>
     </p>
     
 </body>

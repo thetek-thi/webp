@@ -23,19 +23,27 @@ class Friend implements JsonSerializable {
         $this->status = 'dismissed';
     }
 
+    function set_status_requested() {
+        $this->status = 'requested';
+    }
+
     function jsonSerialize(): mixed {
         return get_object_vars($this);
     }
 
-    static function fromJson(object $data): User {
+    static function fromJson(object $data): Friend {
 //      THIS IS A HORRILBE SOLUTION:
 //      foreach ($data as $key => $value) {
 //          $user->{$key} = $value;
 //      }
-        $user = new User($data->{'username'});
+        if (!is_string($data->{'username'}))
+            $data->{'username'} = $data->{'username'}->{'username'};
+        $user = new Friend($data->{'username'});
         if (property_exists($data, 'status')) {
             if ($data->{'status'} === 'accepted')
                 $user->set_status_accepted();
+            else if ($data->{'status'} === 'requested')
+                $user->set_status_requested();
             else if ($data->{'status'} === 'dismissed')
                 $user->set_status_dismissed();
         }

@@ -69,7 +69,7 @@ class BackendService {
             $res = HttpClient::get($this->get_url('friend'), $_SESSION['chat_token']);
             $arr = array();
             foreach ($res as $i)
-                $arr[] = Model\Friend::fromJson($i);
+                $arr[] = Friend::fromJson($i);
             return $arr;
         } catch (\Exception $e) {
             error_log($e);

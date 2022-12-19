@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<?php require '../start.php'; ?>
+<?php
+require '../start.php';
+if (!isset($_GET['chat_token'])) {
+  header('Location: ../login');
+  exit();
+}
+if (isset($_GET['user']))
+  $user = $_GET['user'];
+else {
+  header('Location: ../friends');
+  exit();
+}
+?>
 <html lang="en">
 <head>
+<script>
+window.chatToken = "<?= $_SESSION['chat_token'] ?>";
+window.chatCollectionId = "<?= CHAT_SERVER_ID ?>";
+window.chatServer = "<?= CHAT_SERVER_URL ?>";
+</script>
   <meta charset="UTF-8">
   <title>Chat with Jerry</title>
   <link rel="stylesheet" href="../style/main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>Chat with Jerry</h1>
+  <h1>Chat with <?=$user?></h1>
   <p>
     <a href="../friends">&lt; Back</a> |
-    <a href="../profile?user=">Profile</a> |
-    <a class="spec1" href="../friends?remove=">Remove Friend</a>
+    <?php echo "<a href=\"../profile?user=$user\">Profile</a>"; ?> |
+    <?php echo "<a class=\"spec1\" href=\"../friends?remove=$user\">Remove Friend</a>"; ?>
   </p>
   <div class="borderaround" id="chatview">
     <p><small class="timelabel">Loading...</small></p>

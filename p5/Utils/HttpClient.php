@@ -2,7 +2,7 @@
 namespace Utils;
 
 class HttpClient {
-    public static function post(string $url, object $data, string|null $token = null) {
+    public static function post(string $url, mixed $data, string|null $token = null) {
         // initiate curl.
         $ch = curl_init();
 
@@ -43,7 +43,7 @@ class HttpClient {
         throw new \Exception('Http status is ' . $status . ': ' . $result);
     }
 
-    public static function put(string $url, object $data, string|null $token = null) {
+    public static function put(string $url, mixed $data, string|null $token = null) {
         // initiate curl.
         $ch = curl_init();
 

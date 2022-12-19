@@ -1,9 +1,7 @@
 <?php
-namespace Utils;
-
 require 'HttpClient.php';
-require '../Model/Friend.php';
-require '../Model/User.php';
+require 'Friend.php';
+require 'User.php';
 
 class BackendService {
     private string $base;
@@ -45,10 +43,10 @@ class BackendService {
         return false;
     }
 
-    function load_user(string $username): Model\User|null {
+    function load_user(string $username): User|null {
         try {
             $res = HttpClient::get($this->get_url('user') . '/' . $username, $_SESSION['chat_token']);
-            return Model\User::fromJson(json_decode($username));
+            return User::fromJson($res);
         } catch (\Exception $e) {
             error_log($e);
         }
@@ -77,7 +75,7 @@ class BackendService {
         return null;
     }
 
-    function friend_request(Model\Friend $friend): mixed {
+    function friend_request(Friend $friend): mixed {
         try {
             return HttpClient::post($this->get_url('friend'), array('username' => $friend->get_username()), $_SESSION['chat_token']);
         } catch (\Exception $e) {
@@ -86,7 +84,7 @@ class BackendService {
         return null;
     }
 
-    function friend_accept(Model\Friend $friend): mixed {
+    function friend_accept(Friend $friend): mixed {
         try {
             return HttpClient::put($this->get_url('friend') . '/' . $friend->get_username(), array('status' => 'accepted'), $_SESSION['chat_token']);
         } catch (\Exception $e) {
@@ -95,7 +93,7 @@ class BackendService {
         return null;
     }
 
-    function friend_dismiss(Model\Friend $friend): mixed {
+    function friend_dismiss(Friend $friend): mixed {
         try {
             return HttpClient::put($this->get_url('friend') . '/' . $friend->get_username(), array('status' => 'dismissed'), $_SESSION['chat_token']);
         } catch (\Exception $e) {
@@ -104,7 +102,7 @@ class BackendService {
         return null;
     }
 
-    function friend_remove(Model\Friend $friend): mixed {
+    function friend_remove(Friend $friend): mixed {
         try {
             return HttpClient::delete($this->get_url('friend') . '/' . $friend->get_username(), $_SESSION['chat_token']);
         } catch (\Exception $e) {

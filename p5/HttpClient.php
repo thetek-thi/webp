@@ -1,6 +1,4 @@
 <?php
-namespace Utils;
-
 class HttpClient {
     public static function post(string $url, mixed $data, string|null $token = null) {
         // initiate curl.

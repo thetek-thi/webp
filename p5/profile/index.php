@@ -1,5 +1,15 @@
 <!DOCTYPE html>
-<?php require '../start.php'; ?>
+<?php
+require '../start.php';
+
+if (isset($_GET['user'])) {
+    $current_user = $_GET['user'];
+    $profile = $service->load_user($current_user);
+} else {
+    header('Location: ../friends');
+    exit();
+}
+?>
 
 <html>
     <head>
@@ -8,10 +18,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Profile of Tom</h1>
-        <a href="./chat.html">&lt; Back to Chat</a>
+        <h1>Profile of <?=$current_user?></h1>
+        <?php echo "<a href=\"../chat?user=$current_user\">&lt; Back to Chat</a>"; ?>
         |
-        <a class="spec1" href="./friends.html">Remove Friend</a>
+        <?php echo "<a class=\"spec1\" href=\"../friends?remove=$current_user\">Remove Friend</a>"; ?>
 
         <br><br>
 
@@ -19,21 +29,37 @@
 
         <div class="aside-right">
             <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Porttitor lacus luctus accumsan tortor posuere ac ut.
-                Platea dictumst vestibulum rhoncus est. Arcu odio ut sem nulla pharetra diam.
-                Nisi scelerisque eu ultrices vitae. Vitae tortor condimentum lacinia quis vel eros.
-                Et leo duis ut diam. Bibendum neque egestas congue quisque egestas diam.
-                Diam quis enim lobortis scelerisque fermentum dui faucibus.
+                <?php
+                if ($profile->get_description())
+                    echo $profile->get_description();
+                else
+                    echo "user did not set a description yet.";
+                ?>
             </div>
 
             <br><br>
 
             <b>Coffee or Tea?</b>
-            <blockquote>Tea</blockquote>
+            <blockquote>
+                <?php
+                if ($profile->get_coffee_or_tea())
+                    echo $profile->get_coffee_or_tea();
+                else
+                    echo "user did not set a preference yet.";
+                ?>
+            </blockquote>
 
             <b>Name</b>
-            <blockquote>Thomas</blockquote>
+            <blockquote>
+                <?php
+                $first = $profile->get_first_name();
+                $last = $profile->get_last_name();
+                if ( $first &&  $last) echo "$first $last";
+                if ( $first && !$last) echo $first;
+                if (!$first &&  $last) echo $last;
+                if (!$first && !$last) echo $current_user;
+                ?>
+            </blockquote>
         </div>
     </body>
 </html>

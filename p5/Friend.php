@@ -1,8 +1,4 @@
 <?php
-namespace Model;
-
-use JsonSerializable;
-
 class Friend implements JsonSerializable {
     private string|null $username = null;
     private string|null $status = null; // why the heck a string? i guess my lecturer is too stupid for enums.

@@ -35,7 +35,7 @@
       ?>
     </fieldset>
     <p class="center">
-      <button type="button" class="nomaxwidthonmobile">Cancel</button>
+      <a href="../login"><button type="button" class="nomaxwidthonmobile">Cancel</button></a>
       <input type="submit" class="nomaxwidthonmobile" value="Create Account">
     </p>
   </form>

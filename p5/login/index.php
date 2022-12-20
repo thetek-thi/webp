@@ -27,7 +27,7 @@
             </p>
         </fieldset>
         <div class="center">
-            <a href="register"><button type="button" class="nomaxwidthonmobile">Register</button></a>
+            <a href="../register"><button type="button" class="nomaxwidthonmobile">Register</button></a>
             <input type="submit" value="Login" class="nomaxwidthonmobile">
         </div>
     </form>
